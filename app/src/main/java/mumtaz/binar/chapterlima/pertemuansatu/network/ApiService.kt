@@ -1,10 +1,10 @@
 package mumtaz.binar.chapterlima.pertemuansatu.network
 
-import mumtaz.binar.chapterlima.pertemuansatu.model.GetAllFilmResponseItem
-import mumtaz.binar.chapterlima.pertemuansatu.model.GetAllStafResponseItem
-import mumtaz.binar.chapterlima.pertemuansatu.model.GetAllUserResponseItem
+import mumtaz.binar.chapterlima.pertemuansatu.model.*
 import retrofit2.Call
+import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.POST
 
 interface ApiService {
 
@@ -16,4 +16,7 @@ interface ApiService {
 
     @GET("staf")
     fun getAllStaf() : Call<List<GetAllStafResponseItem>>
+
+    @POST("film")
+    fun postFilm(@Body req : RequestFilm) : Call<List<PostFIlmResponse>>
 }

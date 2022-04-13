@@ -1,5 +1,6 @@
 package mumtaz.binar.chapterlima.pertemuansatu
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -21,7 +22,12 @@ class MainDataActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_data)
 
-        getDataStaf()
+        getDataFilm()
+
+        tambahdata.setOnClickListener {
+            val pindah = Intent(this, AddFilmActivity::class.java)
+            startActivity(pindah)
+        }
     }
 
     fun getDataFilm () {
@@ -34,7 +40,11 @@ class MainDataActivity : AppCompatActivity() {
                 ) {
                     if (response.isSuccessful){
                         val dataFilm = response.body()
-                        val adapterFilm = AdapterFilm(dataFilm!!)
+                        val adapterFilm = AdapterFilm(dataFilm!!){
+                            val pindah = Intent(this@MainDataActivity, DetailFilmActivity::class.java)
+                            pindah.putExtra("detailfilm", it)
+                            startActivity(pindah)
+                        }
                         val lm = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
                         rv_film.layoutManager = lm
                         rv_film.adapter = adapterFilm
@@ -103,5 +113,14 @@ class MainDataActivity : AppCompatActivity() {
 
 
             })
+    }
+
+    override fun onResume() {
+        super.onResume()
+        getDataFilm()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
     }
 }

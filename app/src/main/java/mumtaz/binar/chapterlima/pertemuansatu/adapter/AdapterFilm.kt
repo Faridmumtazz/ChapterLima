@@ -4,11 +4,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_film.view.*
 import mumtaz.binar.chapterlima.R
 import mumtaz.binar.chapterlima.pertemuansatu.model.GetAllFilmResponseItem
 
-class AdapterFilm(private var datafilm : List<GetAllFilmResponseItem>): RecyclerView.Adapter<AdapterFilm.ViewHolder>() {
+class AdapterFilm(private var datafilm : List<GetAllFilmResponseItem>, private var onclick : (GetAllFilmResponseItem)->Unit): RecyclerView.Adapter<AdapterFilm.ViewHolder>() {
 
 
     class ViewHolder(itemView : View):RecyclerView.ViewHolder(itemView) {
@@ -23,9 +24,20 @@ class AdapterFilm(private var datafilm : List<GetAllFilmResponseItem>): Recycler
     }
 
     override fun onBindViewHolder(holder: AdapterFilm.ViewHolder, position: Int) {
+        Glide.with(holder.itemView.context).load(datafilm[position].image).into(holder.itemView.img_filmm)
+
         holder.itemView.tv_judulfilm.text = datafilm[position].name
         holder.itemView.tv_tglfilm.text = datafilm[position].date
         holder.itemView.tv_sutradarafilm.text = datafilm[position].director
+
+//        this.let {
+//            Glide.with(holder.itemView.context).load(datafilm[position].image).into(holder.itemView.img_film)
+//        }
+
+        holder.itemView.card_film.setOnClickListener {
+            onclick(datafilm[position])
+        }
+
     }
 
     override fun getItemCount(): Int {

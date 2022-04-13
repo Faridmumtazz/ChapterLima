@@ -1,14 +1,13 @@
 package mumtaz.binar.chapterlima.pertemuansatu.model
 
 
-import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import kotlinx.android.parcel.Parcelize
 
-@Parcelize
-data class GetAllFilmResponseItem(
+data class PostFIlmResponse(
     @SerializedName("date")
     val date: String,
+    @SerializedName("description")
+    val description: String,
     @SerializedName("director")
     val director: String,
     @SerializedName("id")
@@ -16,7 +15,5 @@ data class GetAllFilmResponseItem(
     @SerializedName("image")
     val image: String,
     @SerializedName("name")
-    val name: String,
-    @SerializedName("description")
-    val description: String
-): Parcelable
+    val name: String
+)

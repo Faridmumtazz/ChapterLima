@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="mumtaz.binar.chapterlima">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ChapterLima">
         <activity
+            android:name=".pertemuansatu.AddFilmActivity"
+            android:exported="false" />
+        <activity
+            android:name=".pertemuansatu.DetailFilmActivity"
+            android:exported="false" />
+        <activity
             android:name=".pertemuansatu.MainDataActivity"
             android:exported="true">
             <intent-filter>
@@ -19,13 +25,10 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true" />
     </application>
 
 </manifest>
