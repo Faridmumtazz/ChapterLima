@@ -19,4 +19,7 @@ interface ApiService {
 
     @POST("film")
     fun postFilm(@Body req : RequestFilm) : Call<List<PostFIlmResponse>>
+
+    @POST("staf")
+    fun postStaf(@Body request : RequestStaf) : Call<List<PostStafResponse>>
 }

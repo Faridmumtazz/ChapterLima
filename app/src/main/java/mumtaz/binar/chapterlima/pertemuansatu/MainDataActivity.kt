@@ -22,10 +22,10 @@ class MainDataActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_data)
 
-        getDataFilm()
+        getDataStaf()
 
         tambahdata.setOnClickListener {
-            val pindah = Intent(this, AddFilmActivity::class.java)
+            val pindah = Intent(this, AddStafActivity::class.java)
             startActivity(pindah)
         }
     }
@@ -117,7 +117,7 @@ class MainDataActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        getDataFilm()
+        getDataStaf()
     }
 
     override fun onDestroy() {

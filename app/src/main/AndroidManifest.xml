@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ChapterLima">
         <activity
+            android:name=".pertemuansatu.AddStafActivity"
+            android:exported="false" />
+        <activity
             android:name=".pertemuansatu.AddFilmActivity"
             android:exported="false" />
         <activity
