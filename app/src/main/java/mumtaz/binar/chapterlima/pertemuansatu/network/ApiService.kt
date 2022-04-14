@@ -1,10 +1,9 @@
 package mumtaz.binar.chapterlima.pertemuansatu.network
 
+import androidx.room.Update
 import mumtaz.binar.chapterlima.pertemuansatu.model.*
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface ApiService {
 
@@ -22,4 +21,14 @@ interface ApiService {
 
     @POST("staf")
     fun postStaf(@Body request : RequestStaf) : Call<List<PostStafResponse>>
+
+    @DELETE("film/{id}")
+    fun deleteFilm(@Path("id") id : Int) : Call<Int>
+
+    @PUT("film/{id}")
+    fun updateFilm(
+        @Path("id") id : Int,
+        @Body reques : RequestFilm
+    )
+    :Call<List<GetAllFilmResponseItem>>
 }
