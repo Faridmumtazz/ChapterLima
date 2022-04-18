@@ -9,9 +9,12 @@ import kotlinx.android.synthetic.main.item_film.view.*
 import mumtaz.binar.chapterlima.R
 import mumtaz.binar.chapterlima.pertemuansatu.model.GetAllFilmResponseItem
 
-class AdapterFilm(private var datafilm : List<GetAllFilmResponseItem>, private var onclick : (GetAllFilmResponseItem)->Unit): RecyclerView.Adapter<AdapterFilm.ViewHolder>() {
+class AdapterFilm( private var onclick : (GetAllFilmResponseItem)->Unit): RecyclerView.Adapter<AdapterFilm.ViewHolder>() {
 
-
+    private var datafilm : List<GetAllFilmResponseItem>? = null
+    fun setDataFilm(film : List<GetAllFilmResponseItem>){
+        this.datafilm = film
+    }
     class ViewHolder(itemView : View):RecyclerView.ViewHolder(itemView) {
 
     }
@@ -24,25 +27,28 @@ class AdapterFilm(private var datafilm : List<GetAllFilmResponseItem>, private v
     }
 
     override fun onBindViewHolder(holder: AdapterFilm.ViewHolder, position: Int) {
-        Glide.with(holder.itemView.context).load(datafilm[position].image).into(holder.itemView.img_filmm)
+        Glide.with(holder.itemView.context).load(datafilm!![position].image).into(holder.itemView.img_filmm)
 
-        holder.itemView.tv_judulfilm.text = datafilm[position].name
-        holder.itemView.tv_tglfilm.text = datafilm[position].date
-        holder.itemView.tv_sutradarafilm.text = datafilm[position].director
+        holder.itemView.tv_judulfilm.text = datafilm!![position].name
+        holder.itemView.tv_tglfilm.text = datafilm!![position].date
+        holder.itemView.tv_sutradarafilm.text = datafilm!![position].director
 
 //        this.let {
 //            Glide.with(holder.itemView.context).load(datafilm[position].image).into(holder.itemView.img_film)
 //        }
 
         holder.itemView.card_film.setOnClickListener {
-            onclick(datafilm[position])
+            onclick(datafilm!![position])
         }
 
     }
 
     override fun getItemCount(): Int {
-        return datafilm.size
-
+        if (datafilm == null) {
+            return 0
+        } else {
+            return datafilm!!.size
+        }
     }
 
 }
