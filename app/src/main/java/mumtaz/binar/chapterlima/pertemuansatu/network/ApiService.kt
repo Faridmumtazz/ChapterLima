@@ -31,4 +31,14 @@ interface ApiService {
         @Body reques : RequestFilm
     )
     :Call<List<GetAllFilmResponseItem>>
+
+    @DELETE("staf/{id}")
+    fun deleteStaf(@Path("id") id: Int) : Call<Int>
+
+    @PUT("staf/{id}")
+    fun updateStaf(
+        @Path("id") id : Int,
+        @Body request : RequestStaf
+    )
+    :Call<List<GetAllStafResponseItem>>
 }

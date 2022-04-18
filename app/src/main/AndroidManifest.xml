@@ -13,6 +13,12 @@
         android:theme="@style/Theme.ChapterLima"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".pertemuansatu.UpdateStafActivity"
+            android:exported="false" />
+        <activity
+            android:name=".pertemuansatu.DetailStafActivity"
+            android:exported="false" />
+        <activity
             android:name=".pertemuansatu.UpdateFilmActivity"
             android:exported="false" />
         <activity

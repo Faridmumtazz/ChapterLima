@@ -1,8 +1,11 @@
 package mumtaz.binar.chapterlima.pertemuansatu.model
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class GetAllStafResponseItem(
     @SerializedName("createdAt")
     val createdAt: String,
@@ -14,4 +17,4 @@ data class GetAllStafResponseItem(
     val image: String,
     @SerializedName("name")
     val name: String
-)
+) : Parcelable

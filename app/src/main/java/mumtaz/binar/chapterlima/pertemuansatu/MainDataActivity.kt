@@ -22,10 +22,10 @@ class MainDataActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_data)
 
-        getDataFilm()
+        getDataStaf()
 
         tambahdata.setOnClickListener {
-            val pindah = Intent(this, AddFilmActivity::class.java)
+            val pindah = Intent(this, AddStafActivity::class.java)
             startActivity(pindah)
         }
     }
@@ -98,7 +98,11 @@ class MainDataActivity : AppCompatActivity() {
                 ) {
                     if (response.isSuccessful){
                         val dataStaf = response.body()
-                        val adapterStaf = AdapterStaf(dataStaf!!)
+                        val adapterStaf = AdapterStaf(dataStaf!!){
+                            val pindah = Intent(this@MainDataActivity, DetailStafActivity::class.java)
+                            pindah.putExtra("detailstaf", it)
+                            startActivity(pindah)
+                        }
                         val lm = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
                         rv_film.layoutManager = lm
                         rv_film.adapter = adapterStaf
@@ -117,7 +121,7 @@ class MainDataActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        getDataFilm()
+        getDataStaf()
     }
 
     override fun onDestroy() {
